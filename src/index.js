@@ -1,9 +1,12 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
 import App from './App';
+import ToppingsProvider from './context/PizzaContext';
 
 ReactDOM.render(
-  <App />,
+  <ToppingsProvider>
+    <App />
+  </ToppingsProvider>,
   document.getElementById('root')
 );
 
