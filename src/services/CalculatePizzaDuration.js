@@ -1,4 +1,4 @@
-import OrderStatus from '../data/RequesHelper';
+import OrderStatus from '../data/GetAPIData';
 let base = '';
 let numbOfToppings = [];
 

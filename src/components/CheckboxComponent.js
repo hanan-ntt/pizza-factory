@@ -6,9 +6,9 @@ import FormLabel from '@material-ui/core/FormLabel';
 
 const CheckboxComponent = (props) => {
 
-    const {data, type} = props;
+    const {type, data} = props;
 
-    console.log("data: ", data);
+    console.log("checkbox: ", data);
     console.log("type: ", type);
 
     const [listOfToppingChoices, setListOfToppingChoices] = useState([]);

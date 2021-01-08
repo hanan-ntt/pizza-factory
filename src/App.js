@@ -11,23 +11,23 @@ import ViewOrder from './views/ViewOrder';
 
 const App = () => {
   return (
-    <ToppingsProvider>
-      <MakePizza />
-      {/* // <Router>
-      //   <Switch>
-      //     <Route 
-      //       path={ROUTES.HOME}
-      //       exact
-      //       component={MakePizza}
-      //     />
-      //     <Route 
-      //       path={ROUTES.ORDER}
-      //       exact
-      //       component={ViewOrder}
-      //     />
-      //   </Switch>
-      // </Router> */}
-    </ToppingsProvider>
+   // <ToppingsProvider>
+     // <MakePizza />
+      <Router>
+        <Switch>
+          <Route 
+            path={ROUTES.HOME}
+            exact
+            component={MakePizza}
+          />
+          <Route 
+            path={ROUTES.ORDER}
+            exact
+            component={ViewOrder}
+          />
+        </Switch>
+      </Router>
+   // </ToppingsProvider>
   )
 };
 
