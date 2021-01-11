@@ -1,4 +1,5 @@
-import OrderStatus from '../data/GetAPIData';
+import { pizzaOrderStatus } from '../constants';
+import pizzaApiFactory from '../data/PizzaApiFactory';
 let base = '';
 let numbOfToppings = [];
 
@@ -18,7 +19,7 @@ const calculatePizzaDuration = () => {
 
 
 const orderDestails = async () => {
-    const orderStatus = await OrderStatus('https://run.mocky.io/v3/495af456-7cf6-4132-9c4f-558af777cf6d');
+    const orderStatus = await pizzaApiFactory(pizzaOrderStatus);
     base = orderStatus.base;
     numbOfToppings = orderStatus.toppings;
 }

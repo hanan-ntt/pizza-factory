@@ -1,60 +1,47 @@
-import React, { useState, useEffect } from 'react';
-import Checkbox from '@material-ui/core/Checkbox';
-import FormControlLabel from '@material-ui/core/FormControlLabel';
-import FormControl from '@material-ui/core/FormControl';
-import FormLabel from '@material-ui/core/FormLabel';
+import React, { useState } from "react";
 
 const CheckboxComponent = (props) => {
-
-    const {type, data} = props;
-
-    console.log("checkbox: ", data);
-    console.log("type: ", type);
-
-    const [listOfToppingChoices, setListOfToppingChoices] = useState([]);
-
-    const handleChange = (event) => {
-        const {
-            target: {
-                name,
-            },
-        } = event;
-
-        if (event.target.checked === false){
-            console.log("unchecked fam! ", event.target.name);
-            setListOfToppingChoices(prevState => prevState.filter(item => item !== event.target.name));
-            return;
-        }
-
-        console.log("checkbox component newest topping clicked value: ", name);
-        console.log('before adding topping choices: ', listOfToppingChoices);
-        setListOfToppingChoices([
-            ...listOfToppingChoices, name            
-        ]);
-        console.log('after adding topping choices: ', listOfToppingChoices);
-    };
-
-    useEffect(() => {
-        props.input(listOfToppingChoices);
-      }, [listOfToppingChoices, props]);
-
-    return (
-        <div>
-            <FormLabel component="legend"> Choose your {type} </FormLabel>
-        
-            {
-                data.map(item => (
-                    <FormControlLabel
-                    control={<Checkbox name={item} onChange={handleChange} />}
-                    label={item}
-                  />
-                ))
-            }
-            
-
-        </div>
-    );
+  const { title, data, min, max } = props;
+  const [selectedItems, setSelectedItems] = useState([]);
+  const [checkNumOfItems, setCheckNumOfItems] = useState(true);
+  const handleChange = (e) => {
+    const { name, checked } = e.target;
+    if (checked) {
+      setSelectedItems((prev) => prev.concat(name));
+    }
+    if (!checked) {
+      let removeUncheckedValue = selectedItems.filter((item) => item !== name);
+      setSelectedItems(removeUncheckedValue);
+    }
+  };
+  const checkNumberOfItems = (min, max) => {
+    if (selectedItems.length > max) {
+      setCheckNumOfItems(false);
+    }
+  };
+  checkNumberOfItems();
+  console.log("Item Limit Test: ",checkNumOfItems);
+  console.log("Min Val: ",min);
+  console.log("Max Val: ",max);
+  console.log("Current Val:", selectedItems.length);
+  return (
+    <>
+      <p>{`Choose ${title} from below`}</p>
+      {data.map((item) => (
+        <label htmlFor={item} key={item}>
+          {item}
+          <input
+            type="checkbox"
+            id={item}
+            name={item}
+            value={item}
+            onChange={handleChange}
+          />
+        </label>
+      ))}
+      {checkNumOfItems ? '' : `You need to a minimum of ${min} and maximum of ${max} ${title}`}
+    </>
+  );
 };
-
 
 export default CheckboxComponent;

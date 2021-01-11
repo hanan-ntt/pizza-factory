@@ -1,6 +1,6 @@
 const ROUTES = {
-    HOME: '/',
-    ORDER:'/order/:orderID'
-}
+  HOME: "/",
+  ORDER: "/order/:orderID",
+};
 
 export default ROUTES;
