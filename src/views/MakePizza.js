@@ -5,6 +5,13 @@ import RadioComponent from "../components/RadioComponent";
 import { PizzaContext } from "../data/PizzaContext";
 import CreateOrder from "../classes/CreateOrder";
 
+/** 
+ * @name Make Pizza View
+ * @requires Toppings Data and Base Data
+ * @returns A view for the user to create a pizza using toppings and base
+ */
+
+
 const MakePizza = () => {
   const [
     toppings,

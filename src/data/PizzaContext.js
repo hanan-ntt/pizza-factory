@@ -1,7 +1,11 @@
 import React, { createContext, useState, useEffect } from "react";
 import { fetchPizzaBases, fetchPizzaToppings } from "./PizzaApiFactory";
 
-
+/** 
+ * @name Pizza Context Store
+ * @requires Fetch Pizza Bases and Fetch Pizza Toppings
+ * @returns A global data store for the app, this can be used anywhere in the app to retrieve any backend data and order data
+ */
 
 export const PizzaContext = createContext();
 

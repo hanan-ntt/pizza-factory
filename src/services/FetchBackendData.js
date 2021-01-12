@@ -1,5 +1,12 @@
 import axios from "axios";
 
+/** 
+ * @name Fetch Backend Data
+ * @requires Axios, a JS package to make API Calls
+ * @returns dataset for concerned user
+ */
+
+
 const fetchBackEndData = async (props) => {
   try {
     const url = `https://run.mocky.io/${props}`;
