@@ -1,4 +1,10 @@
 class CreateOrder {
+  /**
+   * Creates an instance of CreateOrder.
+   * @param {*} base
+   * @param {*} selectedToppings
+   * @memberof CreateOrder
+   */
   constructor(base, selectedToppings) {
     this.base = base;
     this.selectedToppings = selectedToppings;
@@ -11,7 +17,7 @@ class CreateOrder {
     return {
       base: this.base,
       selectedToppings: this.selectedToppings,
-      orderID: this.createOrderID,
+      orderID: this.createOrderID(),
     };
   }
 }

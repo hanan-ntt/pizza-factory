@@ -1,5 +1,4 @@
-import { pizzaOrderStatus } from '../constants';
-import pizzaApiFactory from '../data/PizzaApiFactory';
+import { fetchOrderStatus } from '../data/PizzaApiFactory';
 let base = '';
 let numbOfToppings = [];
 
@@ -19,7 +18,7 @@ const calculatePizzaDuration = () => {
 
 
 const orderDestails = async () => {
-    const orderStatus = await pizzaApiFactory(pizzaOrderStatus);
+    const orderStatus = await fetchOrderStatus();
     base = orderStatus.base;
     numbOfToppings = orderStatus.toppings;
 }

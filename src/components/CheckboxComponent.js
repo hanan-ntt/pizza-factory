@@ -1,9 +1,17 @@
 import React, { useState } from "react";
 
+/**
+ * @name CheckboxComponent
+ * @function handle change to verify the selection and create an array of selected values
+ * @param props
+ * @return array of selected checkbox values
+ */
+
 const CheckboxComponent = (props) => {
-  const { title, data, min, max } = props;
+  const { title, data, max, checkboxSelection } = props;
   const [selectedItems, setSelectedItems] = useState([]);
-  const [checkNumOfItems, setCheckNumOfItems] = useState(true);
+  const [maxLimitReached, setMaxLimitReach] = useState(true);
+
   const handleChange = (e) => {
     const { name, checked } = e.target;
     if (checked) {
@@ -13,18 +21,16 @@ const CheckboxComponent = (props) => {
       let removeUncheckedValue = selectedItems.filter((item) => item !== name);
       setSelectedItems(removeUncheckedValue);
     }
-  };
-  const checkNumberOfItems = (min, max) => {
-    if (selectedItems.length > max) {
-      setCheckNumOfItems(false);
+    if (selectedItems.length >= max - 1) {
+      setMaxLimitReach(false);
+    } else {
+      setMaxLimitReach(true);
     }
   };
-  checkNumberOfItems();
-  console.log("Item Limit Test: ",checkNumOfItems);
-  console.log("Min Val: ",min);
-  console.log("Max Val: ",max);
-  console.log("Current Val:", selectedItems.length);
+  checkboxSelection(selectedItems);
+
   return (
+    
     <>
       <p>{`Choose ${title} from below`}</p>
       {data.map((item) => (
@@ -39,7 +45,7 @@ const CheckboxComponent = (props) => {
           />
         </label>
       ))}
-      {checkNumOfItems ? '' : `You need to a minimum of ${min} and maximum of ${max} ${title}`}
+      <p>{maxLimitReached ? "" : `You can pick maximum of ${max} ${title}.`}</p>
     </>
   );
 };
