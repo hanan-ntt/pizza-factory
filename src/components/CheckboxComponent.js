@@ -1,4 +1,5 @@
 import React, { useState } from "react";
+import PropTypes from "prop-types";
 
 /**
  * @name CheckboxComponent
@@ -30,7 +31,6 @@ const CheckboxComponent = (props) => {
   checkboxSelection(selectedItems);
 
   return (
-    
     <>
       <p>{`Choose ${title} from below`}</p>
       {data.map((item) => (
@@ -48,6 +48,13 @@ const CheckboxComponent = (props) => {
       <p>{maxLimitReached ? "" : `You can pick maximum of ${max} ${title}.`}</p>
     </>
   );
+};
+
+CheckboxComponent.propTypes = {
+  title: PropTypes.string.isRequired,
+  data: PropTypes.array.isRequired,
+  max: PropTypes.number.isRequired,
+  checkboxSelection: PropTypes.func.isRequired,
 };
 
 export default CheckboxComponent;

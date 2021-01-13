@@ -11,9 +11,8 @@ import CreateOrder from "../classes/CreateOrder";
  * @returns A view for the user to create a pizza using toppings and base
  */
 
-
 const MakePizza = () => {
-  const [
+  const {
     toppings,
     bases,
     selectedToppings,
@@ -22,14 +21,14 @@ const MakePizza = () => {
     setSelectedBase,
     pizzaOrder,
     setPizzaOrder,
-  ] = useContext(PizzaContext);
+   } = useContext(PizzaContext);
   const history = useHistory();
 
   const handleSubmit = (e) => {
     e.preventDefault();
     const newOrder = new CreateOrder(selectedBase, selectedToppings);
     setPizzaOrder(newOrder.orderDetails);
-    history.push("/order/81");
+    history.push(`/order/${pizzaOrder.orderID}`);
   };
   console.log(pizzaOrder);
   return (

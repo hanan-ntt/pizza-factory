@@ -15,6 +15,7 @@ export const PizzaProvider = (props) => {
   const [selectedToppings, setSelectedToppings] = useState([]);
   const [selectedBase, setSelectedBase] = useState();
   const [pizzaOrder, setPizzaOrder] = useState({});
+  
   useEffect(() => {
     const initialisePizzaOptions = async () => {
       const fetchToppings = await fetchPizzaToppings();
@@ -27,7 +28,7 @@ export const PizzaProvider = (props) => {
 
   return (
     <PizzaContext.Provider
-      value={[
+      value={{
         toppings,
         bases,
         selectedToppings,
@@ -36,7 +37,7 @@ export const PizzaProvider = (props) => {
         setSelectedBase,
         pizzaOrder,
         setPizzaOrder,
-      ]}
+      }}
     >
       {props.children}
     </PizzaContext.Provider>

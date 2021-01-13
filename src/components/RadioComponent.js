@@ -1,4 +1,5 @@
 import React, { useState } from "react";
+import PropTypes from 'prop-types';
 
 /**
  *
@@ -7,6 +8,7 @@ import React, { useState } from "react";
  * @param props
  * @return target value of selected radio button 
  */
+
 const RadioComponent = (props) => {
   const { title, data, radioButtonSelection } = props;
   const [selectedItem, setSelectedItem] = useState();
@@ -34,6 +36,12 @@ const RadioComponent = (props) => {
       ))}
     </>
   );
+};
+
+RadioComponent.propTypes = {
+  title: PropTypes.string.isRequired,
+  data: PropTypes.array.isRequired,
+  radioButtonSelection: PropTypes.func.isRequired,
 };
 
 export default RadioComponent;
